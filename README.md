@@ -1,10 +1,12 @@
 # docker-local-development-rhel-6-10
 
-Dockerfiles and settings for local development on Rhel 6.10 images via Ansible
+Dockerfiles and settings for local development on Rhel 6.10 images via Ansible (mainly)
 
 Since Rhel 6.10 is out of support getting things to work on it (specifically Python 3.x) and Ansible is quite painful
 
 There are also some "gotcha's" to keep in mind when using M1 macs and when trying to avoid using Docker-Desktop which has now been properly monetised
+
+There's also a dockerfile-centos-7 version in here as a bit of a contrast which can be connected to via VSCode.
 
 ## Installing Docker without Docker-Desktop
 
@@ -19,9 +21,9 @@ There are also some "gotcha's" to keep in mind when using M1 macs and when tryin
 
 Either run all docker tasks with 
 
-(a) --platform linux/amd64 flag
-(b) export DOCKER_DEFAULT_PLATFORM=linux/amd64 
-(c) add `FROM --platform=linux/amd64 <dockerimage>:<version> to all dockerfiles
+* --platform linux/amd64 flag
+* export DOCKER_DEFAULT_PLATFORM=linux/amd64 
+* add `FROM --platform=linux/amd64 <dockerimage>:<version> to all dockerfiles
 
 ## Making life easier with Portainer
 
@@ -38,6 +40,14 @@ You'll want to use the community edition
 
 ### Connecting to your local file system (i.e. VSCode)
 If the docker image has the relevant glibc and other libraries available then VSCode will be able to connect to the file system for you without having to mount a volume.
+
+### Docker exec 
+`docker exec -it <container_id> /bin/bash`
+
+### Portainer gui
+`http://localhost:9443` > Containers > Select container > Console 
+
+If you haven't set the run -i flag you won't be able to easily do this. You can still do it with `docker exec -it <container_id> /bin/bash` but you'll need to know the container id
 
 ## Things to avoid
 
