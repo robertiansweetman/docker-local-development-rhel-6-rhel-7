@@ -14,6 +14,7 @@ There's also a dockerfile-centos-7 version in here as a bit of a contrast which 
 2. `brew install docker docker-compose`
 3. There will likely be instructions to link these two as docker-compose is now a plugin for docker so follow those instructions
 4. You need a docker runtime for macs - use [Colima](https://github.com/abiosoft/colima)
+5. you'll need to run `colima start` to start the docker runtime 
 
 ## Considerations for M1 macs
 
@@ -34,6 +35,9 @@ You'll want to use the community edition
 
 ### Build
 `docker build --platform linux/amd64 -t <dockerimage>:<version> .`
+
+#### Build rhel7.9 container
+`docker built -f dockerfile-centos-7 -t <dockerimage>:<version> .`
 
 ### Run
 `docker run -t -i -d --platform linux/amd64 -v /<local_folder_path>:/<container_folder <dockerimage>:<version>`
