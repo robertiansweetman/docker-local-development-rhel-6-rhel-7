@@ -21,9 +21,9 @@ There's also a dockerfile-centos-7 version in here as a bit of a contrast which 
 
 Either run all docker tasks with 
 
-* --platform linux/amd64 flag
-* export DOCKER_DEFAULT_PLATFORM=linux/amd64 
-* add `FROM --platform=linux/amd64 <dockerimage>:<version> to all dockerfiles
+* `--platform linux/amd64 flag`
+* `export DOCKER_DEFAULT_PLATFORM=linux/amd64` to environment
+* add `FROM --platform=linux/amd64 <dockerimage>:<version>` to all dockerfiles
 
 ## Making life easier with Portainer
 
