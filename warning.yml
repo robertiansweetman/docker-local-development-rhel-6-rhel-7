@@ -1,0 +1,18 @@
+---
+  - name: "testing"
+    hosts: localhost
+    connection: local
+    tasks:
+    
+    - name: display warning on login
+      ansible.builtin.shell:
+        cmd: "ls -l"
+      register: "result"
+
+    - debug: var=result.stdout_lines
+
+    - name: change login message
+      ansible.builtin.copy:
+        src: "./file/motd"
+        dest: "/etc/motd"
+        remote_src: yes

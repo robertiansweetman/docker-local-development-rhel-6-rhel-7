@@ -26,4 +26,27 @@ Either run all docker tasks with
 ## Making life easier with Portainer
 
 [Follow these installation instructions](https://docs.portainer.io/start/install/server/docker/linux)
-You'll want to use to community edition
+You'll want to use the community edition
+
+## Docker commands
+
+### Build
+`docker build --platform linux/amd64 -t <dockerimage>:<version> .`
+
+### Run
+`docker run -t -i -d --platform linux/amd64 -v /<local_folder_path>:/<container_folder <dockerimage>:<version>`
+
+### Connecting to your local file system (i.e. VSCode)
+If the docker image has the relevant glibc and other libraries available then VSCode will be able to connect to the file system for you without having to mount a volume.
+
+## Things to avoid
+
+1. Don't run `build` commands from the VSCode terminal. It seems pretty slow and will sometimes randomly timeout getting things from repositories...
+
+2. Due to the lack of GCLIB versions in Centos 6.10 you won't be able to connect your VSCode directly to the running container (I tried but something fails, even if you follow the VSCode workaround).
+
+## Sources
+
+https://www.getpagespeed.com/server-setup/how-to-fix-yum-after-centos-6-went-eol
+
+https://danieleriksson.net/2017/02/08/how-to-install-latest-python-on-centos/
