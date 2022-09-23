@@ -13,7 +13,14 @@
 
     - name: change login message
       ansible.builtin.copy:
-        src: "./file/motd"
+        src: "./files/motd"
         dest: "/etc/motd"
         remote_src: yes
         force: yes
+
+    - name: show contents
+      ansible.builtin.shell:
+        cmd: "cat /etc/motd"
+      register: "content"
+
+    - debug: var=content.stdout_lines

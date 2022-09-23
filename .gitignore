@@ -1,3 +1,5 @@
 /python-venv
 /ansible
 vscode-remote*
+*-unix
+yum*
