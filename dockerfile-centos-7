@@ -1,0 +1,9 @@
+FROM --platform=linux/amd64 centos:centos7.9.2009
+
+RUN yum install wget curl unzip git nc ca-certificates gcc screen zlib-devel bzip2-devel openssl-devel libffi-devel -y
+
+RUN wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz -P tmp/ \
+    && tar -xvf tmp/Python-3.9.6.tgz -C tmp/ \
+    && cd tmp/Python-3.9.6 \
+    && ./configure --enable-optimizations \
+    && make altinstall
