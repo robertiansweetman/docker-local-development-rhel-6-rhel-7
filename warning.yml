@@ -16,3 +16,4 @@
         src: "./file/motd"
         dest: "/etc/motd"
         remote_src: yes
+        force: yes
